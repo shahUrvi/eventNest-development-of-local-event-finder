@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket Booking - Event Nest</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Box Model Styles */
+        *, *::before, *::after {
+            box-sizing: border-box; /* Include padding and border in element's total width and height */
+        }
+        body {
+            background-color: #dee79a;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Border around the content */
+        .booking-container {
+            border: 2px solid #28a745; /* Solid border color */
+            border-radius: 10px; /* Rounded corners */
+            padding: 20px; /* Padding inside the border */
+            background-color: #ffffff; /* Background color for better contrast */
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #343a40;
+        }
+        .form-group label {
+            font-weight: bold;
+        }
+        .form-control {
+            border-radius: 5px;
+            transition: border-color 0.3s ease;
+            padding: 10px; /* Add padding for better spacing */
+            margin-bottom: 15px; /* Add margin for spacing between form elements */
+        }
+        .form-control:focus {
+            border-color: #28a745;
+            box-shadow: 0 0 5px rgba(40, 167, 69, 0.5);
+        }
+        .btn-success {
+            background-color: #28a745;
+            border-color: #28a745;
+            transition: background-color 0.3s ease;
+            padding: 10px 20px; /* Add padding for button */
+        }
+        .btn-success:hover {
+            background-color: #218838;
+            border-color: #1e7e34;
+        }
+        .tooltip-invalid {
+            color: red;
+            font-weight: bold;
+        }
+        .tooltip-valid {
+            color: green;
+            font-weight: bold;
+        }
+        #ticketFeedback {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="header"></div>
+
+    <section class="container my-5 booking-container"> <!-- Added booking-container class -->
+        <h2>Book Your Tickets</h2>
+        <form id="booking-form">
+            <div class="form-group">
+                <label for="eventId">Event ID:</label>
+                <input type="text" class="form-control" id="eventId" required>
+                <small id="eventIdHelp" class="form-text text-muted">Choose a valid Event ID (e.g., E123, E456).</small>
+            </div>
+            <div class="form-group">
+                <label for="numTickets">Number of Tickets:</label>
+                <input type="number" class="form-control" id="numTickets" min="1" required>
+                <small class="form-text" id="ticketFeedback"></small>
+            </div>
+            <div class="form-group">
+                <label for="names">Names of Attendees (comma-separated):</label>
+                <textarea class="form-control" id="names" rows="4" required></textarea>
+                <small class="form-text text-muted">Enter names separated by commas.</small>
+            </div>
+            <button type="submit" class="btn btn-success">Proceed to Payment</button>
+        </form>
+    </section>
+
+    <script>
+        document.getElementById('booking-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission
+
+            const eventId = document.getElementById('eventId').value;
+            const numTickets = document.getElementById('numTickets').value;
+            const names = document.getElementById('names').value;
+
+            if (eventId && numTickets > 0 && names.split(',').length >= numTickets) {
+                // Store data in localStorage
+                localStorage.setItem('eventId', eventId);
+                localStorage.setItem('numTickets', numTickets);
+                localStorage.setItem('attendeeNames', names);
+
+                // Redirect to payment page
+                window.location.href = "payment.html";
+            } else {
+                // Add feedback if the form is not valid
+                document.getElementById('ticketFeedback').innerHTML = "Please ensure all fields are filled correctly.";
+                document.getElementById('ticketFeedback').classList.add('tooltip-invalid');
+            }
+        });
+    </script>
+
+    <div id="footer"></div>
+</body>
+</html>

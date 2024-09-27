@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Reviews - Event Nest</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background-color: #e0f7fa; /* Light blue background */
+            font-family: 'Arial', sans-serif; /* Clean font */
+        }
+
+        #header {
+            background-color: #a4f595; /* Header color */
+            padding: 20px; /* Padding for the header */
+            text-align: center; /* Centered text */
+        }
+
+        #header h1 {
+            color: #1a1a1a; /* Dark text color for header */
+        }
+
+        .review-card {
+            background-color: #ffffff; /* White background for review cards */
+            border-radius: 10px; /* Rounded corners */
+            padding: 20px; /* Padding inside cards */
+            margin-bottom: 20px; /* Space between cards */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            transition: transform 0.2s; /* Smooth hover effect */
+        }
+
+        .review-card:hover {
+            transform: scale(1.02); /* Slightly enlarge on hover */
+        }
+
+        #footer {
+            text-align: center; /* Centered text */
+            padding: 20px; /* Padding for footer */
+            background-color: #343a40; /* Dark footer background */
+            color: #ffffff; /* White text in footer */
+            position: relative; /* Keep footer at the bottom */
+            bottom: 0; /* Stick to the bottom */
+            width: 100%; /* Full width */
+        }
+
+        h2 {
+            color: #007bff; /* Bright blue for section heading */
+        }
+
+        h3 {
+            color: #3e4e50; /* Dark teal for subheadings */
+        }
+
+        p {
+            color: #4a4a4a; /* Dark grey for paragraph text */
+        }
+
+        .btn-primary {
+            background-color: #007bff; /* Blue button background */
+            border-color: #007bff; /* Blue button border */
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+            border-color: #0056b3; /* Darker blue border on hover */
+        }
+    </style>
+</head>
+<body>
+    <div id="header">
+        <h1>User Reviews for Event Nest</h1>
+    </div>
+
+    <section class="text-center my-5">
+        <h2>User Reviews</h2>
+        <p>Check out what our users say about Event Nest!</p>
+        <img src="C:\Users\inspi\OneDrive\Desktop\review.png" alt="User Reviews" class="img-fluid mb-4" />
+        
+        <!-- Review Form -->
+        <div class="container">
+            <h3>Submit Your Review</h3>
+            <form id="reviewForm">
+                <div class="form-group">
+                    <label for="username">Your Name</label>
+                    <input type="text" class="form-control" id="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="review">Your Review</label>
+                    <textarea class="form-control" id="review" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit Review</button>
+            </form>
+        </div>
+        
+        <!-- Reviews Display Section -->
+        <div class="container mt-5">
+            <h3>All Reviews</h3>
+            <div id="reviewsContainer">
+                <!-- Reviews will be dynamically added here -->
+            </div>
+        </div>
+    </section>
+
+    <div id="footer">
+        <p>© 2024 Event Nest. All rights reserved.</p>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+        const reviewForm = document.getElementById('reviewForm');
+        const reviewsContainer = document.getElementById('reviewsContainer');
+
+        reviewForm.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Get form values
+            const username = document.getElementById('username').value;
+            const reviewText = document.getElementById('review').value;
+
+            // Create review card
+            const reviewCard = document.createElement('div');
+            reviewCard.className = 'review-card';
+            reviewCard.innerHTML = `
+                <h5 style="color: #3e4e50;">${username}</h5> <!-- Dark teal for username -->
+                <p style="color: #4a4a4a;">${reviewText}</p> <!-- Dark grey for review text -->
+            `;
+
+            // Add the review card to the reviews container
+            reviewsContainer.prepend(reviewCard);
+
+            // Reset form
+            reviewForm.reset();
+        });
+    </script>
+</body>
+</html>

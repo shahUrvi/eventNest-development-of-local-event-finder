@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Event Nest</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+    background-color: #e0f7fa; /* Light blue background */
+}
+
+h2 {
+    color: #343a40; /* Dark color for headings */
+    margin-bottom: 30px;
+}
+
+.form-control {
+    border-radius: 10px; /* Rounded input fields */
+    border: 2px solid #6c757d; /* Darker border for contrast */
+}
+
+.form-control:focus {
+    border-color: #95e2f5; /* Focused input border */
+    box-shadow: none;
+}
+
+button {
+    background-color: #6c757d; /* Button color */
+    border: none;
+    border-radius: 50px;
+    padding: 10px 30px;
+    color: white;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #5a6268; /* Darker hover effect */
+}
+
+.info-section {
+    background-color: #b2ff59; /* Light green for better contrast */
+    padding: 20px; /* Slightly reduced padding */
+    border-radius: 10px; /* Slightly reduced border radius */
+    color: #343a40; /* Dark text color */
+    margin: 20px 0; /* Add margin to separate from other elements */
+}
+
+.info-section h4 {
+    color: #343a40; /* Dark heading color */
+}
+
+.info-section p {
+    font-size: 14px; /* Font size */
+}
+
+.map-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px; /* Adjusted margin */
+}
+
+.map-image {
+    width: 80%; /* Full width of the container */
+    height: 200px; /* Adjust height as needed */
+    border-radius: 10px; /* Rounded corners */
+}
+
+.contact-details {
+    flex: 1; /* Takes 1 part of the available space */
+    padding-right: 20px; /* Space between map and details */
+}
+
+.map-container {
+    flex: 1; /* Takes 1 part of the available space */
+}
+
+#footer {
+    text-align: center;
+    padding: 10px 0; /* Footer padding */
+    background-color: #343a40; /* Dark footer background */
+    color: white;
+}
+
+    </style>
+    <script>
+        function showSuccessMessage(event) {
+            event.preventDefault(); // Prevent the default form submission
+            alert("Your message has been successfully submitted. We will contact you soon!"); // Show success message
+            document.querySelector("form").reset(); // Optional: Reset the form after submission
+        }
+    </script>
+</head>
+<body>
+    <!-- Header -->
+    <div id="header"></div>
+
+    <!-- Contact Us Form -->
+    <section class="text-center my-5">
+        <h2>Contact Us</h2>
+        <div class="container">
+            <form onsubmit="showSuccessMessage(event)">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" class="form-control" placeholder="Your Email" required>
+                </div>
+                <div class="form-group">
+                    <textarea class="form-control" placeholder="Your Message" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="btn">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Contact Information Section -->
+    <section class="info-section text-center my-5">
+        <h4>Get in Touch with Us</h4>
+        <div class="map-section">
+            <div class="contact-details">
+                <p>Email: support@eventnest.com</p>
+                <p>Phone: +123 456 7890</p>
+                <p>Follow us on social media for updates and more event information!</p>
+            </div>
+
+            <div class="map-container">
+                <h2>Find Us</h2>
+                <img src="C:\Users\inspi\OneDrive\Desktop\map.png" alt="Map Placeholder" class="map-image">
+                <p><a href="https://www.google.com/maps" target="_blank" class="btn btn-primary">Open in Google Maps</a></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <div id="footer">
+        <p>© 2024 Event Nest. All rights reserved.</p>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+</body>
+</html>

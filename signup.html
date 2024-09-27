@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up Page</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #2e7b7a;
+        }
+        .border-container {
+            border: 2px solid #28a745; /* Outer border color */
+            border-radius: 15px; /* Rounded corners */
+            padding: 40px; /* Increased inner padding */
+            background-color: #fff; /* Background color */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            width: 400px; /* Fixed width */
+        }
+        h2 {
+            margin-bottom: 20px; /* Spacing below the heading */
+        }
+        .form-control {
+            height: 50px; /* Increased height for input fields */
+        }
+        .btn {
+            width: 100%; /* Full width button */
+        }
+    </style>
+</head>
+<body>
+
+<!-- Sign Up Section -->
+<section id="signup" class="text-center border-container">
+    <h2>Sign Up</h2>
+    <form id="signupForm">
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Full Name" required>
+        </div>
+        <div class="form-group">
+            <input type="email" class="form-control" placeholder="Email" required>
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control" placeholder="Password" required>
+        </div>
+        <button type="submit" class="btn btn-success">Sign Up</button>
+    </form>
+</section>
+
+<!-- Popup Modal -->
+<div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="signupModalLabel">Sign Up Confirmation</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                You have successfully signed up!
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $('#signupForm').on('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+            $('#signupModal').modal('show'); // Show the modal
+            $(this).trigger('reset'); // Reset the form fields
+        });
+    });
+</script>
+
+</body>
+</html>
